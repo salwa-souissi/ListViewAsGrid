@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ListViewAsGrid"
+             xmlns:controls="clr-namespace:ListViewAsGrid.CustomComponents.ListViewAsGrid"
+             x:Class="ListViewAsGrid.MainPage">
+
+    <StackLayout>
+        <controls:ListGridView    ListOrientation="Vertical"  SelectedItem="{Binding SelectedCategorie}"
+                                         ItemsSource="{Binding CategoriesList}">
+            <controls:ListGridView.ItemTemplate>
+                <DataTemplate>
+                <local:myItemTemplate/>
+                </DataTemplate>
+            </controls:ListGridView.ItemTemplate>
+        </controls:ListGridView>
+    </StackLayout>
+
+</ContentPage>
