@@ -176,36 +176,27 @@ namespace ListViewAsGrid.CustomComponents.ListViewAsGrid
                     MyRowCount++;
                 }
             }
-
-
-
-            //else
-            //    if (ItemsSource != null && ListOrientation == StackOrientation.Vertical)
-            //{
-            //    for (int MyCount = 0; MyCount < ColumnsNumber; MyCount++)
-            //    {
-            //        _grid.Children.Add(Listitems[MyCount], MyCount, 0);
-            //    }
-            //}
-            //if (ItemsSource != null)
-            //{
-            //    var lenght = Listitems.Count;
-            //    for (int MyCount = 0; MyCount < lenght; MyCount++)
-            //    {
-            //        for (int MyRowCount = 0; MyRowCount < RowsNumber; MyRowCount++)
-            //        {
-            //            for (int MyColumnsCount = 0; MyColumnsCount < ColumnsNumber; MyColumnsCount++)
-            //            {
-
-            //                _grid.Children.Add(Listitems[MyCount], MyRowCount, MyColumnsCount);
-
-            //            }
-
-            //        }
-            //    }
-            //}
-
-
+            else
+            {
+                int insered = 0;
+                while (MyCount < lenght)
+                {
+                    for (int rowCount = 0; rowCount < RowsNumber; rowCount++)
+                    {
+                        for (int columnCount = 0; columnCount < ColumnsNumber; columnCount++)
+                        {
+                            _grid.Children.Add(Listitems[MyCount], columnCount, rowCount);
+                            if (MyCount < lenght - 1)
+                                MyCount++;
+                            else
+                                return;
+                            insered++;
+                            if (RowsNumber * ColumnsNumber == insered)
+                                return;
+                        }
+                    }
+                }
+            }
         }
 
         protected virtual View GetItemView(object item)

@@ -4,9 +4,9 @@
              xmlns:local="clr-namespace:ListViewAsGrid"
              xmlns:controls="clr-namespace:ListViewAsGrid.CustomComponents.ListViewAsGrid"
              x:Class="ListViewAsGrid.MainPage">
-
+    
     <StackLayout>
-        <controls:ListGridView  ListOrientation="Horizontal"  SelectedItem="{Binding SelectedEmployee}"  RowsNumber="2"
+        <controls:ListGridView   SelectedItem="{Binding SelectedEmployee}"  RowsNumber="3" ColumnsNumber="3"
                                          ItemsSource="{Binding EmployeesList}">
             <controls:ListGridView.ItemTemplate>
                 <DataTemplate>
