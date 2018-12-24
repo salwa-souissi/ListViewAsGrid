@@ -6,8 +6,8 @@
              x:Class="ListViewAsGrid.MainPage">
 
     <StackLayout>
-        <controls:ListGridView    ListOrientation="Vertical"  SelectedItem="{Binding SelectedCategorie}"
-                                         ItemsSource="{Binding CategoriesList}">
+        <controls:ListGridView    ListOrientation="Horizontal"  SelectedItem="{Binding SelectedEmployee}"
+                                         ItemsSource="{Binding EmployeesList}">
             <controls:ListGridView.ItemTemplate>
                 <DataTemplate>
                 <local:myItemTemplate/>

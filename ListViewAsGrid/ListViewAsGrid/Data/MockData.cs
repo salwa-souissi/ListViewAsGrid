@@ -8,38 +8,38 @@ namespace ListViewAsGrid.Data.ListViewAsGrid
 {
     public static class MockData
     {
-         public static ObservableCollection<Categories> Categories = new ObservableCollection<Categories>()
+         public static ObservableCollection<Employee> Employees = new ObservableCollection<Employee>()
         {
-            new Models.Categories{
-                Ar = "في كل الاوقات",ID = 1, Dt = "", En = "All Times",  Fr="Tous le Temps",    Tr="" 
+            new Models.Employee{
+                Name = "Ali",ID = 1 
             },
-            new Models.Categories{
-                Ar = "دعاء من القرأن",ID = 2, Dt = "", En = "Quraan ListViewAsGrid",  Fr="Quraan ListViewAsGrid",    Tr="" 
+            new Models.Employee{
+                Name = "Salah",ID = 2 
             },
-            new Models.Categories{
-                Ar = "دعاء المسجد",ID = 3, Dt = "", En = "Mosque",  Fr="Mosque",    Tr="" 
+            new Models.Employee{
+                Name = "Hassan",ID = 3 
             },
-             new Models.Categories{
-                Ar = "دعاء الاستسقاء",ID = 4, Dt = "", En = "Ablution",  Fr="Ablution",    Tr="" 
+             new Models.Employee{
+                Name = "Youssef",ID = 4 
             },
-             new Models.Categories{
-                Ar = "دعاء الصلاة",ID = 5, Dt = "", En = "Prayer",  Fr="Prière",    Tr="" 
+             new Models.Employee{
+                Name = "Mostafa",ID = 5
             },
 
-            new Models.Categories{
-                Ar = "توجيه",ID = 6, Dt = "", En = "Guidance",  Fr="Orientation",    Tr="" 
+            new Models.Employee{
+                Name = "Mohamed",ID = 6
             },
-            new Models.Categories{
-                Ar = "الأطفال",ID = 7, Dt = "", En = "Children",  Fr="Enfants",    Tr="" 
+            new Models.Employee{
+                Name = "Haroun",ID = 7
             },
-            new Models.Categories{
-                Ar = "الأكل",ID = 8, Dt = "", En = "Eating",  Fr="Manger",    Tr="" 
+            new Models.Employee{
+                Name = "Houssem",ID = 8
             },
-             new Models.Categories{
-                Ar = "الصوم",ID = 9, Dt = "", En = "Fasting",  Fr="Le jeûne",    Tr="" 
+             new Models.Employee{
+                Name = "Moez",ID = 9
             },
-             new Models.Categories{
-                Ar = "يوم الجمعة",ID = 10, Dt = "", En = "friday",  Fr="Vendredi",    Tr="" 
+             new Models.Employee{
+                Name = "Amir",ID = 10
             }
         };
     }

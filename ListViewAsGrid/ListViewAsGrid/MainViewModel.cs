@@ -10,12 +10,12 @@ namespace ListViewAsGrid
 {
     class MainViewModel
     {
-        public ObservableCollection<Categories> CategoriesList { get; set; }
+        public ObservableCollection<Employee> EmployeesList { get; set; }
         public Page CurrentPage { get; set; }
         public INavigation _nav { get; set; }
-        private Categories _selectedCategorie;
+        private Employee _selectedCategorie;
 
-        public Categories SelectedCategorie
+        public Employee SelectedEmployee
         {
             get { return _selectedCategorie; }
             set {
@@ -24,7 +24,7 @@ namespace ListViewAsGrid
 
         public MainViewModel()
         {
-            CategoriesList = MockData.Categories;
+            EmployeesList = MockData.Employees;
         }
     }
 }
