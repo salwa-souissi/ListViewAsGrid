@@ -6,11 +6,21 @@
              x:Class="ListViewAsGrid.MainPage">
     
     <StackLayout>
-        <controls:ListGridView   SelectedItem="{Binding SelectedEmployee}"  RowsNumber="3" ColumnsNumber="3"
+        <controls:ListGridView ListOrientation="Horizontal" RowsNumber="2"   SelectedItem="{Binding SelectedEmployee}" SelectedItemBagroundColor="OrangeRed"
                                          ItemsSource="{Binding EmployeesList}">
             <controls:ListGridView.ItemTemplate>
                 <DataTemplate>
-                <local:myItemTemplate/>
+                <!--<local:myItemTemplate/>-->
+                    <Frame OutlineColor="Silver" BackgroundColor="BlueViolet" CornerRadius="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
+                            </Grid.RowDefinitions>
+                            <Label  Grid.Row="0" Text="{Binding ID}" />
+                            <Label  Grid.Row="1" Text="{Binding Name}" />
+                        </Grid>
+                    </Frame>
                 </DataTemplate>
             </controls:ListGridView.ItemTemplate>
         </controls:ListGridView>

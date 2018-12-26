@@ -40,6 +40,37 @@ namespace ListViewAsGrid.Data.ListViewAsGrid
             },
              new Models.Employee{
                 Name = "Amir",ID = 10
+            },
+            new Models.Employee{
+                Name = "Ali",ID = 11
+            },
+            new Models.Employee{
+                Name = "Salah",ID = 12
+            },
+            new Models.Employee{
+                Name = "Hassan",ID = 13
+            },
+             new Models.Employee{
+                Name = "Youssef",ID = 14
+            },
+             new Models.Employee{
+                Name = "Mostafa",ID = 15
+            },
+
+            new Models.Employee{
+                Name = "Mohamed",ID = 16
+            },
+            new Models.Employee{
+                Name = "Haroun",ID = 17
+            },
+            new Models.Employee{
+                Name = "Houssem",ID = 18
+            },
+             new Models.Employee{
+                Name = "Moez",ID = 19
+            },
+             new Models.Employee{
+                Name = "Amir",ID = 20
             }
         };
     }

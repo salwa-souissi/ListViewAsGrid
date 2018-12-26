@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -39,6 +41,9 @@ namespace ListViewAsGrid.CustomComponents.ListViewAsGrid
         public static readonly BindableProperty ColumnsNumberProperty =
             BindableProperty.Create("ColumnsNumber", typeof(int), typeof(ListGridView), defaultValue: 1, propertyChanged: OnColumnsNumberChanged, defaultBindingMode: BindingMode.TwoWay);
 
+        public static readonly BindableProperty SelectedItemBagroundColorProperty =
+            BindableProperty.Create("SelectedItemBagroundColor", typeof(Color), typeof(ListGridView), defaultValue: Color.LightGray, propertyChanged: OnSelectedItemBagroundColorChanged, defaultBindingMode: BindingMode.TwoWay);
+
 
         public ICommand SelectedCommand
         {
@@ -74,6 +79,12 @@ namespace ListViewAsGrid.CustomComponents.ListViewAsGrid
         {
             get { return (int)GetValue(ColumnsNumberProperty); }
             set { SetValue(ColumnsNumberProperty, value); }
+        }
+
+        public Color SelectedItemBagroundColor
+        {
+            get { return (Color)GetValue(SelectedItemBagroundColorProperty); }
+            set { SetValue(SelectedItemBagroundColorProperty, value); }
         }
 
         private static void ItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
@@ -199,6 +210,7 @@ namespace ListViewAsGrid.CustomComponents.ListViewAsGrid
             }
         }
 
+
         protected virtual View GetItemView(object item)
         {
             var content = ItemTemplate.CreateContent();
@@ -218,7 +230,6 @@ namespace ListViewAsGrid.CustomComponents.ListViewAsGrid
             };
 
             AddGesture(view, gesture);
-
             return view;
         }
 
@@ -248,13 +259,29 @@ namespace ListViewAsGrid.CustomComponents.ListViewAsGrid
             }
 
             itemsView.SelectedItemChanged?.Invoke(itemsView, EventArgs.Empty);
-
             if (itemsView.SelectedCommand?.CanExecute(newValue) ?? false)
             {
                 itemsView.SelectedCommand?.Execute(newValue);
             }
+            itemsView.OnSelectedItemChangedImpl();
         }
+        protected virtual async void OnSelectedItemChangedImpl()
+        {
+            if (SelectedItem != null)
+            {
+                List<View> Views = new List<View>();
+                foreach (var item in _grid.Children)
+                {
+                    Views.Add(item);
+                }
+                var s = Views.Find(p => p.BindingContext.Equals( SelectedItem));
+                Color currentColor = s.BackgroundColor;
+                s.BackgroundColor = SelectedItemBagroundColor;
+                await Task.Delay(200);
+                s.BackgroundColor = currentColor;
+            }
 
+        }
         private static void OnRowsNumberChanged(BindableObject bindable, object oldValue, object newValue)
         {
             ((ListGridView)bindable).OnRowsNumberChangedImpl();
@@ -279,9 +306,17 @@ namespace ListViewAsGrid.CustomComponents.ListViewAsGrid
             }
         }
 
+        private static void OnSelectedItemBagroundColorChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            ((ListGridView)bindable).OnSelectedItemBagroundColorChangedImpl();
+        }
+        protected virtual void OnSelectedItemBagroundColorChangedImpl()
+        {
+          
+        }
+
         public ListGridView()
         {
-            // _scrollView = new ScrollView();
             _grid = new Grid { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
             _grid.ColumnDefinitions = new ColumnDefinitionCollection();
             _grid.RowDefinitions = new RowDefinitionCollection();
@@ -294,9 +329,7 @@ namespace ListViewAsGrid.CustomComponents.ListViewAsGrid
             };
 
             _grid.BackgroundColor = BackgroundColor;
-            // _scrollView.Content = _itemsStackLayout;
             Content = _grid;
-            //    Children.Add(_scrollView);
 
         }
     }
